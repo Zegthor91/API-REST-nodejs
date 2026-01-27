@@ -1,5 +1,6 @@
 const express = require('express');
 const itemsRoutes = require('./routes/items.routes');
+const categorysRoutes = require('./routes/categorys.routes');
 
 const app = express();
 const PORT = 3000;
@@ -12,6 +13,7 @@ app.get('/', (req, res) => {
 
 // Utilisation des routes modulaires
 app.use('/api/items', itemsRoutes);
+app.use('/api/categorys', categorysRoutes);
 
 app.listen(PORT, () => {
     console.log(`Serveur démarré sur http://localhost:${PORT}`);
