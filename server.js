@@ -1,17 +1,26 @@
 const express = require('express');
-const data = require('./data.json');
+const fs = require('fs');
+const path = require('path');
 const app = express();
 const PORT = 3000;
+
+const getData = () => {
+    const filePath = path.join(__dirname, 'data.json');
+    const fileContent = fs.readFileSync(filePath, 'utf-8');
+    return JSON.parse(fileContent);
+};
 
 app.get('/', (req, res) => {
     res.json({ message: "TEST de l'api : elle fonctionne correctement." });
 });
 
 app.get('/api/items', (req, res) => {
+    const data = getData();
     res.json(data);
 });
 
 app.get('/api/items/:id', (req, res) => {
+    const data = getData();
     const id = parseInt(req.params.id);
     const item = data.find(element => element.id === id);
 
@@ -23,6 +32,7 @@ app.get('/api/items/:id', (req, res) => {
 });
 
 app.get('/api/search', (req, res) => {
+    const data = getData();
     const query = req.query.q;
 
     if (!query) {
