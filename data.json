@@ -1,27 +1,27 @@
 [
   {
     "id": 1,
-    "name": "Clavier mécanique",
-    "price": 89.99
+    "name": "T-shirt blanc",
+    "price": 19.99
   },
   {
     "id": 2,
-    "name": "Souris gaming",
+    "name": "Jean slim noir",
     "price": 49.99
   },
   {
     "id": 3,
-    "name": "Écran 27 pouces",
-    "price": 299.99
+    "name": "Sweat à capuche",
+    "price": 39.99
   },
   {
     "id": 4,
-    "name": "Casque audio",
-    "price": 79.99
+    "name": "Veste en cuir",
+    "price": 129.99
   },
   {
     "id": 5,
-    "name": "Webcam HD",
-    "price": 59.99
+    "name": "Baskets blanches",
+    "price": 89.99
   }
 ]
