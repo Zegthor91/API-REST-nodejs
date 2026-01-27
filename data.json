@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Clavier mécanique",
+    "price": 89.99
+  },
+  {
+    "id": 2,
+    "name": "Souris gaming",
+    "price": 49.99
+  },
+  {
+    "id": 3,
+    "name": "Écran 27 pouces",
+    "price": 299.99
+  },
+  {
+    "id": 4,
+    "name": "Casque audio",
+    "price": 79.99
+  },
+  {
+    "id": 5,
+    "name": "Webcam HD",
+    "price": 59.99
+  }
+]
