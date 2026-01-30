@@ -43,7 +43,6 @@ async function getItemById(req, res, next) {
   }
 }
 
-// Méthode GET (postman)
 
 async function searchItemByName(req, res, next) {
   try {
