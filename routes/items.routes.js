@@ -1,5 +1,5 @@
 const express = require('express');
-const { getItems, getItemById, searchItemByName, createItem } = require('../controllers/items.controller');
+const { getItems, getItemById, searchItemByName, createItem, updateItem } = require('../controllers/items.controller');
 
 const router = express.Router();
 
@@ -8,5 +8,6 @@ router.get("/", getItems);
 router.get("/search", searchItemByName);  // IMPORTANT: doit être avant /:id
 router.get("/:id", getItemById);
 router.post("/", createItem);
+router.put("/:id", updateItem);
 
 module.exports = router;

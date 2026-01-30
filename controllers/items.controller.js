@@ -82,4 +82,26 @@ async function createItem(req, res, next) {
   }
 }
 
-module.exports = { getItems, getItemById, searchItemByName, createItem };
+async function updateItem(req, res, next) {
+  try {
+    const items = await readJson(ITEMS_PATH);
+    const id = Number(req.params.id);
+    const index = items.findIndex((x) => x.id === id);
+
+    if (index === -1) {
+      return res.status(404).json({ error: "Item not found" });
+    }
+
+    const { name, price } = req.body;
+    if (name !== undefined) items[index].name = name;
+    if (price !== undefined) items[index].price = Number(price);
+
+    await writeJson(ITEMS_PATH, items);
+
+    res.json(items[index]);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { getItems, getItemById, searchItemByName, createItem, updateItem };
