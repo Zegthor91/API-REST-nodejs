@@ -1,5 +1,5 @@
 const path = require('path');
-const { readJson } = require('../utils/fileStore');
+const { readJson, writeJson } = require('../utils/fileStore');
 
 const ITEMS_PATH = path.join(__dirname, '..', 'data', 'items.json');
 const CATEGORYS_PATH = path.join(__dirname, '..', 'data', 'categorys.json');
@@ -61,4 +61,25 @@ async function searchItemByName(req, res, next) {
 
 
 
-module.exports = { getItems, getItemById, searchItemByName };
+async function createItem(req, res, next) {
+  try {
+    const { name, price } = req.body;
+
+    if (!name || price === undefined) {
+      return res.status(400).json({ error: "Les champs 'name' et 'price' sont requis" });
+    }
+
+    const items = await readJson(ITEMS_PATH);
+    const newId = items.length > 0 ? Math.max(...items.map((i) => i.id)) + 1 : 1;
+    const newItem = { id: newId, name, price: Number(price) };
+
+    items.push(newItem);
+    await writeJson(ITEMS_PATH, items);
+
+    res.status(201).json(newItem);
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { getItems, getItemById, searchItemByName, createItem };

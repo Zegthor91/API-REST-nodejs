@@ -1,5 +1,5 @@
 const express = require('express');
-const { getItems,getItemById, searchItemByName} = require('../controllers/items.controller');
+const { getItems, getItemById, searchItemByName, createItem } = require('../controllers/items.controller');
 
 const router = express.Router();
 
@@ -7,5 +7,6 @@ const router = express.Router();
 router.get("/", getItems);
 router.get("/search", searchItemByName);  // IMPORTANT: doit être avant /:id
 router.get("/:id", getItemById);
+router.post("/", createItem);
 
 module.exports = router;

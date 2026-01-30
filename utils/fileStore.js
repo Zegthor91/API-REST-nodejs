@@ -13,4 +13,8 @@ async function readJson(filePath, fallback) {
 }
 
 
-module.exports = { readJson };
+async function writeJson(filePath, data) {
+  await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf8');
+}
+
+module.exports = { readJson, writeJson };
