@@ -4,28 +4,29 @@
     "name": "T-shirt blanc",
     "price": 19.99
   },
-
   {
     "id": 2,
     "name": "Jean slim noir",
     "price": 49.99
   },
-
   {
     "id": 3,
     "name": "Sweat à capuche",
     "price": 39.99
   },
-
   {
     "id": 4,
     "name": "Veste en cuir",
     "price": 129.99
   },
-  
   {
     "id": 5,
     "name": "Baskets blanches",
     "price": 89.99
+  },
+  {
+    "id": 6,
+    "name": "Casquette Nike",
+    "price": 29.99
   }
 ]
