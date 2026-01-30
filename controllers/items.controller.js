@@ -43,7 +43,7 @@ async function getItemById(req, res, next) {
   }
 }
 
-
+// Méthode GET (postman)
 
 async function searchItemByName(req, res, next) {
   try {
@@ -59,7 +59,7 @@ async function searchItemByName(req, res, next) {
   }
 }
 
-
+// Méthode POST (postman)
 
 async function createItem(req, res, next) {
   try {
@@ -81,6 +81,8 @@ async function createItem(req, res, next) {
     next(err);
   }
 }
+
+// Méthode PUT (postman)
 
 async function updateItem(req, res, next) {
   try {
@@ -104,4 +106,25 @@ async function updateItem(req, res, next) {
   }
 }
 
-module.exports = { getItems, getItemById, searchItemByName, createItem, updateItem };
+// Méthode DELETE (postman)
+
+async function deleteItem(req, res, next) {
+  try {
+    const items = await readJson(ITEMS_PATH);
+    const id = Number(req.params.id);
+    const index = items.findIndex((x) => x.id === id);
+
+    if (index === -1) {
+      return res.status(404).json({ error: "Item not found" });
+    }
+
+    const deleted = items.splice(index, 1)[0];
+    await writeJson(ITEMS_PATH, items);
+
+    res.json({ message: "Item supprimé", item: deleted });
+  } catch (err) {
+    next(err);
+  }
+}
+
+module.exports = { getItems, getItemById, searchItemByName, createItem, updateItem, deleteItem };
